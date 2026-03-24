@@ -6,10 +6,10 @@ import retrofit2.http.Path
 
 interface CatApi {
 
-    @GET("v1/breeds")
+    @GET("breeds")
     suspend fun getAllBreeds(): List<Breed>
 
-    @GET("v1/breeds/{breed_id}")
+    @GET("breeds/{breed_id}")
     suspend fun getBreedById(
         @Path(value = "breed_id") breedId: String
     ): Breed

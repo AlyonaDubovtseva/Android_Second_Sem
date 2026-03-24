@@ -5,12 +5,14 @@ import kotlinx.coroutines.withContext
 import my.study.domain.model.BreedModel
 import my.study.domain.repository.BreedRepository
 
-class GetAllBreedsUseCase (
+class GetAllBreedsUseCase(
     private val repository: BreedRepository
 ) {
-    suspend operator fun invoke(): List<BreedModel> {
+    suspend operator fun invoke(
+        onSourceInfo: (source: String, ageSeconds: Long?) -> Unit
+    ): List<BreedModel> {
         return withContext(Dispatchers.IO) {
-            repository.getAllBreeds()
+            repository.getAllBreeds(onSourceInfo)
         }
     }
 }
