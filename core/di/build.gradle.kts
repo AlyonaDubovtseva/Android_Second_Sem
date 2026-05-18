@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.app.android.library)
+    alias(libs.plugins.app.dagger)
 }
 
 android {
@@ -19,5 +20,6 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
     implementation(project(":core:utils"))
+    implementation(project(":feature:search"))
 
 }

@@ -4,8 +4,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import my.study.domain.model.BreedModel
 import my.study.domain.repository.BreedRepository
+import javax.inject.Inject
 
-class GetBreedByIdUseCase (
+class GetBreedByIdUseCase @Inject constructor(
     private val repository: BreedRepository
 ) {
     suspend operator fun invoke(breedId: String): BreedModel {

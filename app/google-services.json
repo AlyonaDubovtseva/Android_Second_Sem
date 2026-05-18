@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "668882507791",
+    "project_id": "cats-f09a2",
+    "storage_bucket": "cats-f09a2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668882507791:android:1f314c4b02ef9014d6ab7a",
+        "android_client_info": {
+          "package_name": "ru.itis.android.uprising26"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1LOHm4YCJFL6dNecIR5puBptvEuM0POI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

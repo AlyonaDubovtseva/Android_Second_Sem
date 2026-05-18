@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">Энциклопедия кошек</string>
     <string name="title_activity_main">UprisingApp</string>
+    <string name="notification_channel_promo_name">Промо</string>
+    <string name="notification_channel_promo_description">Акции и промо-сообщения</string>
+
+    <string name="notification_channel_auth_name">Авторизация</string>
+    <string name="notification_channel_auth_description">Сообщения авторизации</string>
+
+    <string name="notification_channel_news_name">Новости</string>
+    <string name="notification_channel_news_description">Новости приложения</string>
+
+    <string name="notification_channel_default_name">Обычные уведомления</string>
+    <string name="notification_channel_default_description">Обычные сообщения приложения</string>
+
+    <string name="notification_default_title">Энциклопедия кошек</string>
+    <string name="notification_default_message">Новое сообщение</string>
+
+    <string name="app_info_title">О приложении</string>
+    <string name="app_info_text">
+    Энциклопедия кошек помогает искать породы кошек и открывать подробную информацию о каждой породе.
+    В приложении есть экран поиска, список найденных пород и экран подробной информации.
+</string>
+    <string name="app_info_button">Понятно</string>
 </resources>
