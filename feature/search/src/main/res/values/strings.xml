@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cat_breeds">Породы кошек</string>
+    <string name="breed_origin">Происхождение: %s</string>
+    <string name="breed_life_span">Продолжительность жизни: %s лет</string>
+    <string name="breed_temperament">Характер: %s</string>
+    <string name="breed_description">Описание %s</string>
+    <string name="error_loading">Ошибка загрузки данных</string>
+    <string name="search_hint">Поиск породы</string>
+    <string name="clear">Очистить</string>
+    <string name="retry">Повторить</string>
+    <string name="close">Закрыть</string>
+    <string name="back">Назад</string>
+
+    <!-- Ошибки -->
+    <string name="error_network">Нет интернета. Проверьте подключение</string>
+    <string name="error_server">Ошибка сервера (%d). Попробуйте позже</string>
+    <string name="error_auth">Ошибка авторизации. Проверьте API ключ</string>
+    <string name="error_empty">Ничего не найдено</string>
+    <string name="error_unknown">Что-то пошло не так</string>
+
+    <string name="source_server">Из сервера</string>
+    <string name="source_cache"> Из кэша (%d сек назад)</string>
+</resources>
