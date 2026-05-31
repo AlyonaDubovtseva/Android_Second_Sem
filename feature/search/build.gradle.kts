@@ -24,6 +24,10 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
 
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+
 
 
 }
