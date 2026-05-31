@@ -1,15 +1,17 @@
 package my.study.data.cache
 
 import my.study.domain.model.BreedModel
-import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class BreedCache {
+class BreedCache @Inject constructor() {
     private val cache = mutableMapOf<String, CacheEntry>()
     private val ttlSeconds = 60L
+
     private data class CacheEntry(
         val breeds: List<BreedModel>,
         val timestamp: Long = System.currentTimeMillis()
     )
+
     fun get(query: String): CacheResult? {
         val entry = cache[query] ?: return null
         val now = System.currentTimeMillis()
@@ -23,10 +25,12 @@ class BreedCache {
             ageSeconds = ageSeconds
         )
     }
+
     data class CacheResult(
         val breeds: List<BreedModel>,
         val ageSeconds: Long
     )
+
     fun put(query: String, breeds: List<BreedModel>) {
         cache[query] = CacheEntry(breeds)
     }

@@ -103,7 +103,6 @@ fun BreedListScreen(
                     CircularProgressIndicator()
                 }
             }
-
             state.errorType != null -> {
                 val errorMessage = when (state.errorType) {
                     ErrorType.NETWORK -> stringResource(R.string.error_network)
@@ -112,7 +111,6 @@ fun BreedListScreen(
                     ErrorType.API -> stringResource(R.string.error_server, state.errorCode ?: 0)
                     ErrorType.UNKNOWN -> stringResource(R.string.error_unknown)
                 }
-
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(
@@ -137,7 +135,6 @@ fun BreedListScreen(
                     }
                 }
             }
-
             state.breeds.isEmpty() && state.query.isNotBlank() -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
@@ -149,7 +146,6 @@ fun BreedListScreen(
                     )
                 }
             }
-
             else -> {
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp)

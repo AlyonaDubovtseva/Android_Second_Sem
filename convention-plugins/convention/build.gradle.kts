@@ -47,5 +47,9 @@ gradlePlugin {
             id = libs.plugins.app.hilt.get().pluginId
             implementationClass = "HiltConventionPlugin"
         }
+        register("androidDagger") {
+            id = libs.plugins.app.dagger.get().pluginId
+            implementationClass = "DaggerConventionPlugin"
+        }
     }
 }

@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.app.android.application)
     alias(libs.plugins.app.compose)
+    alias(libs.plugins.app.dagger)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 android {
     namespace = "ru.itis.android.uprising26"
@@ -33,5 +36,10 @@ dependencies {
     implementation(libs.compose.foundation)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
+    implementation(libs.navigation.compose)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.messaging)
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
 }

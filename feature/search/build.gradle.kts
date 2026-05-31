@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.app.android.library)
     alias(libs.plugins.app.compose)
+    alias(libs.plugins.app.dagger)
 }
 
 android {
@@ -22,4 +23,7 @@ dependencies {
     implementation(libs.compose.foundation)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
+
+
+
 }

@@ -3,8 +3,9 @@ package my.study.data.mapper
 import my.study.data.model.BreedDataModel
 import my.study.domain.model.BreedModel
 import my.study.network.pojo.Breed
+import javax.inject.Inject
 
-class BreedMapper {
+class BreedMapper  @Inject constructor() {
 
     fun toDomainFromNetwork(input: Breed): BreedModel {
         return BreedModel(

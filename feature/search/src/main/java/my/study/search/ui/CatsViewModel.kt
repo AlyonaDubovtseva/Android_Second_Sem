@@ -14,42 +14,30 @@ import my.study.domain.error.ApiError
 import my.study.domain.error.AuthError
 import my.study.domain.error.EmptyResultError
 import my.study.domain.error.NetworkError
-import my.study.domain.model.BreedModel
-import my.study.domain.usecase.GetBreedByIdUseCase
 import my.study.domain.usecase.SearchBreedsUseCase
 import my.study.search.R
 
-
 class CatsViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val searchBreedsUseCase: SearchBreedsUseCase,
-    private val getBreedByIdUseCase: GetBreedByIdUseCase
+    private val searchBreedsUseCase: SearchBreedsUseCase
 ) : ViewModel() {
-
 
     var uiState by mutableStateOf(
         CatsUiState(
-            query = savedStateHandle.get<String>(SavedStateKeys.QUERY) ?: "",
-            selectedBreedId = savedStateHandle.get<String>(SavedStateKeys.SELECTED_BREED_ID)
+            query = savedStateHandle[SavedStateKeys.QUERY] ?: ""
         )
     )
         private set
+
     private var searchJob: Job? = null
 
     init {
-        if (uiState.query.isNotEmpty()) {
-            searchBreeds(uiState.query)
-        } else {
-            searchBreeds("")
-        }
-
-        uiState.selectedBreedId?.let { breedId ->
-            loadBreedDetails(breedId)
-        }
+        searchBreeds(uiState.query)
     }
 
     fun searchBreeds(query: String) {
         savedStateHandle[SavedStateKeys.QUERY] = query
+
         uiState = uiState.copy(
             query = query,
             isLoading = true,
@@ -58,8 +46,6 @@ class CatsViewModel(
             sourceInfoResId = null,
             sourceInfoArg = null
         )
-
-        savedStateHandle.remove<String>(SavedStateKeys.SELECTED_BREED_ID)
 
         searchJob?.cancel()
 
@@ -77,13 +63,13 @@ class CatsViewModel(
                         sourceInfoArg = ageSeconds
                     )
                 }
+
                 uiState = uiState.copy(
                     breeds = breeds,
-                    isLoading = false,
+                    isLoading = false
                 )
-
             } catch (e: CancellationException) {
-
+                throw e
             } catch (e: NetworkError) {
                 uiState = uiState.copy(
                     isLoading = false,
@@ -105,7 +91,7 @@ class CatsViewModel(
                     errorType = ErrorType.API,
                     errorCode = e.code
                 )
-            } catch (e: UnknownError) {
+            } catch (e: Exception) {
                 uiState = uiState.copy(
                     isLoading = false,
                     errorType = ErrorType.UNKNOWN
@@ -114,44 +100,14 @@ class CatsViewModel(
         }
     }
 
-    fun selectBreed(breed: BreedModel) {
-        uiState = uiState.copy(
-            selectedBreed = breed,
-            selectedBreedId = breed.id
-        )
-        savedStateHandle[SavedStateKeys.SELECTED_BREED_ID] = breed.id
-    }
-
-    fun clearSelection() {
-        uiState = uiState.copy(
-            selectedBreed = null,
-            selectedBreedId = null
-        )
-        savedStateHandle.remove<String>(SavedStateKeys.SELECTED_BREED_ID)
-    }
-
     fun clearError() {
         uiState = uiState.copy(
             errorType = null,
             errorCode = null
         )
     }
-    fun loadBreedDetails(breedId: String) {
-        viewModelScope.launch {
-            try {
-                val breed = getBreedByIdUseCase(breedId)
-                uiState = uiState.copy(
-                    selectedBreed = breed,
-                    selectedBreedId = breedId
-                )
-                savedStateHandle[SavedStateKeys.SELECTED_BREED_ID] = breedId
-            } catch (e: Exception) {
-                e.message
-            }
-        }
-    }
 }
+
 private object SavedStateKeys {
     const val QUERY = "cats_query"
-    const val SELECTED_BREED_ID = "cats_selected_breed_id"
 }
