@@ -36,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import my.study.search.ui.custom.CustomChartScreen
 import ru.itis.android.uprising26.storage.AppInfoStorage
 import ru.itis.android.uprising26.ui.AppInfoDialog
 
@@ -140,6 +141,17 @@ fun CatsApp() {
                 onBreedClick = { breedId ->
                     application.crashReporter.logClick("open_breed_detail_$breedId")
                     navController.navigate("breed_detail/$breedId")
+                },
+                onCustomViewClick = {
+                    application.crashReporter.logClick("open_custom_view")
+                    navController.navigate("custom_view")
+                }
+            )
+        }
+        composable("custom_view") {
+            CustomChartScreen(
+                onBack = {
+                    navController.popBackStack()
                 }
             )
         }

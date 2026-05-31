@@ -1,7 +1,9 @@
 package my.study.search.ui
 
+import androidx.compose.runtime.Immutable
 import my.study.domain.model.BreedModel
 
+@Immutable
 data class CatsUiState(
     val query: String = "",
     val breeds: List<BreedModel> = emptyList(),

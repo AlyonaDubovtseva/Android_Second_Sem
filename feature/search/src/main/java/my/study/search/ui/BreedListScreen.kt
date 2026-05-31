@@ -44,6 +44,7 @@ fun BreedListScreen(
     state: CatsUiState,
     onSearchQueryChange: (String) -> Unit,
     onBreedClick: (BreedModel) -> Unit,
+    onCustomViewClick: () -> Unit,
     onRetry: () -> Unit,
     onClearError: () -> Unit
 ) {
@@ -75,6 +76,17 @@ fun BreedListScreen(
             text = stringResource(R.string.cat_breeds),
             style = MaterialTheme.typography.headlineMedium
         )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Button(
+            onClick = onCustomViewClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = stringResource(R.string.open_custom_view))
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = state.query,

@@ -21,4 +21,7 @@
 
     <string name="source_server">Из сервера</string>
     <string name="source_cache"> Из кэша (%d сек назад)</string>
+    <string name="open_custom_view">Открыть Custom View</string>
+    <string name="custom_view_title">Custom View №1</string>
+    <string name="custom_view_description">Нажми на сектор, чтобы выделить его. Нажми вне диаграммы, чтобы сбросить выделение.</string>
 </resources>

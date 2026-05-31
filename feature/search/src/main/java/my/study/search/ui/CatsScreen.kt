@@ -5,7 +5,8 @@ import androidx.compose.runtime.Composable
 @Composable
 fun CatsScreen(
     viewModel: CatsViewModel,
-    onBreedClick: (String) -> Unit
+    onBreedClick: (String) -> Unit,
+    onCustomViewClick: () -> Unit
 ) {
     val state = viewModel.uiState
 
@@ -15,6 +16,7 @@ fun CatsScreen(
         onBreedClick = { breed ->
             onBreedClick(breed.id)
         },
+        onCustomViewClick = onCustomViewClick,
         onRetry = {
             viewModel.searchBreeds(state.query)
         },
